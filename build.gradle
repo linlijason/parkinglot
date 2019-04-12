@@ -45,6 +45,7 @@ dependencies {
 
 contracts {
     baseClassForTests = 'com.thoughtworks.contracttest.BaseTest'
+    //contractsDslDir= project.file("") // 改契约文件夹的路径
 
 }
 dependencyManagement {
