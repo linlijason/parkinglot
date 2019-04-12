@@ -1,0 +1,12 @@
+request:
+  method: POST
+  headers:
+    Content-Type: application/json;charset=UTF-8
+  url: /tickets
+  body:
+    car: my car
+    spotId: 001
+    lotId: 002
+
+response:
+  status: 201
