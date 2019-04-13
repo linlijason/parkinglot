@@ -34,4 +34,4 @@ eureka:
 
 
 ticket-service:
-  url: localhost:9090
+  name: ticket-service
