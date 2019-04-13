@@ -1,0 +1,36 @@
+kind: Service
+metadata:
+  name: eureka-server
+  labels:
+    app: eureka-server
+spec:
+  ports:
+  - port: 8080
+    name: http
+  selector:
+    app: eureka-server
+---
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: avengers-parking-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: avengers-parking-service
+        version: v2
+    spec:
+      containers:
+      - name: avengers-parking-service
+        image: DOCKER_IMAGE
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
+      imagePullSecrets:
+      - name: ecr-secret

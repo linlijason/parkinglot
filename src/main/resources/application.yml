@@ -1,7 +1,7 @@
 
 spring:
   application:
-    name: parking-service
+    name: avengers-parking-service
   datasource:
     url: jdbc:h2:mem:parking_service;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=CREATE SCHEMA IF NOT EXISTS parking_service
     platform: h2
@@ -25,6 +25,14 @@ spring:
 feign:
   hystrix:
     enabled: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8080/eureka/
+
 
 ticket-service:
   url: localhost:9090

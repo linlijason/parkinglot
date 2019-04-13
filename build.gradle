@@ -41,6 +41,7 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.cloud:spring-cloud-starter-contract-verifier'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     testCompile "org.springframework.cloud:spring-cloud-starter-contract-stub-runner"
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
