@@ -9,9 +9,9 @@ DOCKER_IMAGE=$DOCKER_REGISTRY/$SERVICE_NAME:$VERSION
 
 sudo $(aws ecr get-login --no-include-email --region cn-northwest-1)
 
-sudo docker build -t parking-service .
-sudo docker tag parking-service:latest $DOCKER_REGISTRY/$SERVICE_NAME:latest
-sudo docker tag parking-service:latest $DOCKER_IMAGE
+sudo docker build -t avengers-ticket-service .
+sudo docker tag avengers-ticket-service:latest $DOCKER_REGISTRY/$SERVICE_NAME:latest
+sudo docker tag avengers-ticket-service:latest $DOCKER_IMAGE
 sudo docker push $DOCKER_REGISTRY/$SERVICE_NAME:latest
 sudo docker push $DOCKER_IMAGE
 
