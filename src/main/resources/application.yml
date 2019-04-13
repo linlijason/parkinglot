@@ -22,6 +22,7 @@ spring:
         trace: false
         web-allow-others: true
   eureka:
+
     instance:
       prefer-ip-address: true
     client:
