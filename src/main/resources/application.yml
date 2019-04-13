@@ -34,4 +34,4 @@ eureka:
 
 
 ticket-service:
-  name: ticket-service
+  name: avengers-ticket-service
