@@ -17,7 +17,7 @@ import java.util.UUID;
 public class TicketController {
 
     @RequestMapping(value = "",method = RequestMethod.POST)
-    public ResponseEntity<Object> post(@RequestBody CreateTicketDto dto){
+    public ResponseEntity<Ticket> create(@RequestBody CreateTicketDto dto){
         Ticket t=new Ticket();
         t.setId(UUID.randomUUID().toString());
         t.setLotId(dto.getLotId());
@@ -25,7 +25,7 @@ public class TicketController {
         t.setSpotNo(dto.getSpotId());
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
                 "/{id}").buildAndExpand(t.getId()).toUri();
-        return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(t);
 
     }
 }
