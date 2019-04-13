@@ -1,5 +1,7 @@
 package com.thoughtworks.stub;
 
+
+import org.junit.Ignore;
         import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureStubRunner(ids = {"com.thoughtworks:parkinglot:0.0.1-SNAPSHOT:stubs:8081"}, //引入jar 包 parkinglot-0.0.1-SNAPSHOT-stubs.jar
         stubsMode = StubRunnerProperties.StubsMode.LOCAL)
 //一定要将stub的jar包安装到本地，或者使用远程
+
 public class TicketAppServiceTest {
 
     @Autowired
@@ -30,9 +33,5 @@ public class TicketAppServiceTest {
        mockMvc.perform(MockMvcRequestBuilders.post("/tickets")
                 .contentType(MediaType.APPLICATION_JSON_UTF8).content("{\"car\":\"my car\",\"spotId\":1,\"lotId\":2}")
         ).andExpect(status().is(201));
-
-
-
     }
-
 }

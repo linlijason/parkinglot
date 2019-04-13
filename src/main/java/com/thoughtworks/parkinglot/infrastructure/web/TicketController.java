@@ -11,20 +11,22 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("tickets")
 public class TicketController  {
 
-    @Autowired
-    private TicketService ticketService;
-
-    @RequestMapping(value = "",method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public ResponseEntity<Ticket> create(@RequestBody CreateTicketDto dto){
 
-        Ticket ticket = ticketService.create(dto);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
-                "/{id}").buildAndExpand(ticket.getId()).toUri();
+        Ticket ticket = new Ticket();
+        ticket.setId(UUID.randomUUID().toString());
+        ticket.setCar(dto.getCar());
+        ticket.setLotId(dto.getLotId());
+        ticket.setSpotNo(dto.getLotId());
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(ticket.getId()).toUri();
         return ResponseEntity.created(location).body(ticket);
 
     }
