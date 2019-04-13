@@ -10,7 +10,7 @@ spec:
     name: http
   selector:
     app: avengers-parking-service
-
+---
 
 spring:
   application:
