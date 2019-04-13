@@ -22,6 +22,9 @@ spring:
       settings:
         trace: false
         web-allow-others: true
+feign:
+  hystrix:
+    enabled: true
 
 ticket-service:
   url: localhost:9090
