@@ -22,13 +22,11 @@ spring:
         trace: false
         web-allow-others: true
   eureka:
-
     instance:
       prefer-ip-address: true
     client:
       service-url:
         defaultZone: http://eureka-server:8080/eureka/
-
 
 server:
   port: 9090
