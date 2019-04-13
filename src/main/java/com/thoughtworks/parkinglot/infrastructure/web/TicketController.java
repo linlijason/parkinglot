@@ -2,6 +2,7 @@ package com.thoughtworks.parkinglot.infrastructure.web;
 
 import com.thoughtworks.parkinglot.domain.entity.Ticket;
 import com.thoughtworks.parkinglot.infrastructure.web.dto.CreateTicketDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,22 +11,21 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("tickets")
-public class TicketController {
+public class TicketController  {
+
+    @Autowired
+    private TicketService ticketService;
 
     @RequestMapping(value = "",method = RequestMethod.POST)
-    public ResponseEntity<Object> post(@RequestBody CreateTicketDto dto){
-        Ticket t=new Ticket();
-        t.setId(UUID.randomUUID().toString());
-        t.setLotId(dto.getLotId());
-        t.setCar(dto.getCar());
-        t.setSpotNo(dto.getSpotId());
+    public ResponseEntity<Ticket> create(@RequestBody CreateTicketDto dto){
+
+        Ticket ticket = ticketService.create(dto);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(
-                "/{id}").buildAndExpand(t.getId()).toUri();
-        return ResponseEntity.created(location).build();
+                "/{id}").buildAndExpand(ticket.getId()).toUri();
+        return ResponseEntity.created(location).body(ticket);
 
     }
 }
